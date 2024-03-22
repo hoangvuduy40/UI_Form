@@ -1,14 +1,16 @@
 import { BlockStack, Button, Card, DataTable, Text } from "@shopify/polaris";
-import React, { useMemo, startTransition } from "react";
+import React, { startTransition, useEffect, useMemo, useState } from "react";
 
 const Preview = ({ watch }) => {
+	const [data, setData] = useState([]);
+
 	const title = watch("title");
 	const description = watch("description");
 	const volumeDiscount = watch("volumeDiscount");
 
 	const rows = useMemo(
 		() =>
-			volumeDiscount.map((item) =>
+			data.map((item) =>
 				Object.values({
 					title: item.title,
 					discountType: item.discountType,
@@ -16,8 +18,14 @@ const Preview = ({ watch }) => {
 					amount: item?.amount,
 				}),
 			),
-		[volumeDiscount],
+		[data],
 	);
+
+	useEffect(() => {
+		startTransition(() => {
+			setData(volumeDiscount);
+		});
+	}, [volumeDiscount]);
 
 	return (
 		<Card roundedAbove='sm'>

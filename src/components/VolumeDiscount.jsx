@@ -1,6 +1,6 @@
 import { Button, Card, Divider, Text } from "@shopify/polaris";
 import { PlusCircleIcon } from "@shopify/polaris-icons";
-import Option from "components/Option";
+import Option from "./Option";
 import { useFieldArray } from "react-hook-form";
 import React from "react";
 

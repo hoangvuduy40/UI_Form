@@ -1,6 +1,6 @@
 import { BlockStack, Form, InlineGrid, Page } from "@shopify/polaris";
-import Preview from "components/Preview";
-import VolumeDiscount from "components/VolumeDiscount";
+import Preview from "./components/Preview";
+import VolumeDiscount from "./components/VolumeDiscount";
 import { useForm } from "react-hook-form";
 import General from "./components/General";
 

@@ -18,6 +18,7 @@ const options = [
 
 const Option = ({ remove, control, index, errors, watch }) => {
 	const volumeDiscount = watch("volumeDiscount");
+
 	return (
 		<>
 			<div style={{ minHeight: "210px" }}>
@@ -78,6 +79,7 @@ const Option = ({ remove, control, index, errors, watch }) => {
 										isArray={true}
 									/>
 									{Object.getOwnPropertyNames(errors).length !== 0 &&
+										errors?.volumeDiscount &&
 										errors?.volumeDiscount[index]?.quantity && (
 											<Text tone='critical'>
 												{errors?.volumeDiscount[index]?.quantity.message}
@@ -112,6 +114,7 @@ const Option = ({ remove, control, index, errors, watch }) => {
 											isArray={true}
 										/>
 										{Object.getOwnPropertyNames(errors).length !== 0 &&
+											errors?.volumeDiscount &&
 											errors?.volumeDiscount[index]?.amount && (
 												<Text tone='critical'>
 													{errors?.volumeDiscount[index]?.amount.message}
