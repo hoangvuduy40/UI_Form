@@ -1,4 +1,5 @@
 import { BlockStack, Button, Card, DataTable, Text } from "@shopify/polaris";
+import { cloneDeep } from "lodash";
 import React, { startTransition, useEffect, useMemo, useState } from "react";
 
 const Preview = ({ watch }) => {
@@ -7,6 +8,7 @@ const Preview = ({ watch }) => {
 	const title = watch("title");
 	const description = watch("description");
 	const volumeDiscount = watch("volumeDiscount");
+	const test = cloneDeep(volumeDiscount);
 
 	const rows = useMemo(
 		() =>
@@ -23,9 +25,9 @@ const Preview = ({ watch }) => {
 
 	useEffect(() => {
 		startTransition(() => {
-			setData(volumeDiscount);
+			setData(test);
 		});
-	}, [volumeDiscount]);
+	}, [test]); // deep reference chưa có thời gian xử lý
 
 	return (
 		<Card roundedAbove='sm'>
@@ -55,6 +57,7 @@ const Preview = ({ watch }) => {
 					rows={rows}
 					defaultSortDirection='descending'
 					initialSortColumnIndex={4}
+					firstColumnMinWidth={100}
 				/>
 			</BlockStack>
 		</Card>
